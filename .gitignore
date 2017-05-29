@@ -51,3 +51,10 @@ buck-out/
 fastlane/report.xml
 fastlane/Preview.html
 fastlane/screenshots
+
+
+{
+  "access_token": "FJiCf9lWorGAnVGmEErE21IGdmJ5jXLh7v5vTJzPRICs310w6aKWMv7nIhB8WcjhVNIJADbx85AY0Bup1sRAV0cG1GBfIdh2Ano1502jtaSLd5yc_s0DBHkeK1IsWXYx",
+  "expires_in": 15551999,
+  "token_type": "Bearer"
+}

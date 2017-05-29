@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Image, ListView, Linking, TouchableOpacity} from 'react-native';
 import Container from '../components/Container';
+import OAuthSimple from 'oauthsimple';
 
 class Main extends Component {
   handlePress = () => {
@@ -15,31 +16,27 @@ state = {
   };
   
   componentDidMount() {
-  navigator.geolocation.getCurrentPosition(
-      (position) => {
-        this.setState({position});
-      },
-      (error) => alert(error),
-      {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000}
-    );
-  }
+    navigator.geolocation.getCurrentPosition(
+        (position) => {
+          this.setState({position});
+        },
+        (error) => alert(error),
+        {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000}
+      );
+    }
 
-  fetchData(){
-
-  }
-
-  render() {
+  render(){
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Dinder
-        </Text>
-        <Container
-        Test
-        onPress={this.handlePress}
-      /> 
-      </View>
-       );
+      <TouchableOpacity style={styles.resultRow}>
+        <Image source={{uri: "https://s3-media2.fl.yelpcdn.com/bphoto/tycJcKwVZr7DdwPsalIoOA/o.jpg"}}
+        style={{width: 80, height: 80, justifyContent: 'flex-start'}} />
+        <View style={{flexDirection: 'column', justifyContent: 'center'}}>
+           <Text style={{fontWeight: 'bold'}}>Grillin' Wings & Things</Text>
+           <Text>Rating: 4.5</Text>
+           <Text>Phone: (720) 570-7800</Text>
+        </View>
+      </TouchableOpacity>
+    )
   }
 }
 
@@ -72,6 +69,19 @@ const styles = StyleSheet.create({
   amount: {
     fontWeight: 'bold',
     textAlign: 'center'
+  },
+  header: {
+    textAlign: 'center',
+    position: 'relative',
+    top: 60,
+    fontSize: 30
+  },
+  resultRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'flex-start',
+    marginBottom: 20,
+    padding: 5,
   }
 });
 
