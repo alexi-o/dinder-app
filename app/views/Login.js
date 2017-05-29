@@ -75,6 +75,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFF',
 },
   welcome: {
+    fontWeight: 'bold',
     fontSize: 30,
     textAlign: 'center',
     margin: 10,
