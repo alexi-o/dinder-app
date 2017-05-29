@@ -1,27 +1,30 @@
 import { Navigation } from 'react-native-navigation';
 
-import Login from './views/Login.js';
+import Favorites from './views/Favorites.js';
 import Main from './views/Main.js';
+import Login from './views/Login.js';
 
 export default() => {
-	Navigation.registerComponent('Login', () => Login);
+	Navigation.registerComponent('Favorites', () => Favorites);
 	Navigation.registerComponent('Main', () => Main);
+	Navigation.registerComponent('Login', () => Login);
 
 	Navigation.startTabBasedApp({
 		tabs: [
 			{
-				label: 'Login',
 				screen: 'Login',
 				icon: require('./images/login.png'),
-				iconSelected: require('./images/login.png'),
 				title: 'Login'
 			},
 			{
-				label: 'Main',
 				screen: 'Main',
 				icon: require('./images/home.png'),
-				iconSelected: require('./images/home_selected.png'),
-				title: 'Main'	
+				title: 'Main'
+			},
+			{
+				screen: 'Favorites',
+				icon: require('./images/heart.png'),
+				title: 'Favorites'	
 			}
 		]
 	});

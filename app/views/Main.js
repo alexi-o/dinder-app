@@ -1,18 +1,17 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Image, ListView, Linking, TouchableOpacity} from 'react-native';
+import { StyleSheet, Alert, Button, Text, View, Image, ListView, Linking, TouchableOpacity} from 'react-native';
 import Container from '../components/Container';
 import OAuthSimple from 'oauthsimple';
 
+const onButtonPress = () => {
+  Alert.alert('Button has been pressed!');
+}
+
 class Main extends Component {
-  handlePress = () => {
-    this.props.navigator.push({
-      screen: 'Login',
-      title: 'Login',
-    });
-  };
 
 state = {
     position: 'unknown'
+
   };
   
   componentDidMount() {
@@ -20,20 +19,33 @@ state = {
         (position) => {
           this.setState({position});
         },
-        (error) => alert(error),
-        {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000}
+        (error) => alert(error)
       );
     }
 
   render(){
     return (
-      <TouchableOpacity style={styles.resultRow}>
+      <TouchableOpacity style={styles.results}>
         <Image source={{uri: "https://s3-media2.fl.yelpcdn.com/bphoto/tycJcKwVZr7DdwPsalIoOA/o.jpg"}}
         style={{width: 80, height: 80, justifyContent: 'flex-start'}} />
         <View style={{flexDirection: 'column', justifyContent: 'center'}}>
            <Text style={{fontWeight: 'bold'}}>Grillin' Wings & Things</Text>
            <Text>Rating: 4.5</Text>
            <Text>Phone: (720) 570-7800</Text>
+           <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+          <Button
+            onPress={onButtonPress}
+            title="SUCKS!"
+            color="red"
+            accessibilityLabel="This sounds great!"
+          />
+          <Button
+            onPress={onButtonPress}
+            title="NICE!"
+            color="green"
+            accessibilityLabel="OK!"
+          />
+        </View>
         </View>
       </TouchableOpacity>
     )
@@ -76,7 +88,7 @@ const styles = StyleSheet.create({
     top: 60,
     fontSize: 30
   },
-  resultRow: {
+  results: {
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'flex-start',
